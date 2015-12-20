@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row info-row">
+    <div class="col-lg-12">
+    	<h3 class="page-title">Фильмы по популярности</h3>
+    	<form class="form-inline search-bar" role="search">
+	      <div class="form-group">
+	        <input type="text" class="form-control" placeholder="Поиск">
+	      </div>
+	      <button type="submit" class="btn btn-default">Найти</button>
+	    </form>
+    </div>
+  </div>
+  <div class="row">
+    {{#each model.movies as |movie|}}
+	    	<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+	    		<div class="list-movies">
+	    			{{#link-to 'movie' movie.id}}
+				    	<div class="list-movies__movie-poster">
+				    		<img src="{{model.imageUrl}}{{movie.poster_path}}" alt="">
+				    		<div class="list-movies__details">
+				      		{{#link-to 'movie' movie.id classNames="btn btn-primary btn-sm hidden-xs details-btn"}}Подробнее{{/link-to}}
+				      	</div>
+				    	</div>
+      			{{/link-to}}
+			    	<div class="list-movies__movie-description">
+			    		<p>{{movie.release_date}}</p>
+				      <h4 class="list-movies__movie-title">{{movie.title}}</h4>
+			      </div>
+		      </div>
+	      </div>
+    {{/each}}
+  </div>
+  <div class="row">
+  	<div class="col-lg-12 text-center">
+  		<ul class="pager">
+			  <li><a href="#">Назад</a></li>
+			  <li><a href="#">Вперед</a></li>
+			</ul>
+  	</div>
+  </div>
+</div>
+<div class="background-container">
+	<div class="background-image"></div>
+</div>

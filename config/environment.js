@@ -16,6 +16,10 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+    contentSecurityPolicy: {
+      'connect-src': "'self' ws://ember.dev:35729 http://api.themoviedb.org/ https://api.themoviedb.org/",
+      'img-src': "'self' http://image.tmdb.org/ https://image.tmdb.org/",
     }
   };
 

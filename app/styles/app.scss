@@ -1,0 +1,105 @@
+@import 'bower_components/bootswatch/cyborg/variables';
+
+/* Components */
+@import 'components/backdrop-image';
+
+
+img {
+	max-width: 100%;
+}
+
+.navbar {
+	border-radius: 0;
+}
+
+.logo-title {
+	margin: 0;
+	font-size: 18px;
+}
+
+.info-row {
+	margin-bottom: 20px;
+}
+
+.page-title {
+	display: inline-block;
+	margin: 0;
+}
+
+.search-bar {
+	display: inline-block;
+	float: right;
+}
+
+.list-movies {
+	text-align: center;
+	margin-bottom: 25px;
+	background-color: $gray-dark;
+}
+
+.list-movies__movie-description {
+	padding: 10px;
+	padding-top: 0;
+}
+
+.list-movies__movie-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 16px;
+}
+
+.list-movies__movie-poster {
+	position: relative;
+	min-height: 395px;
+}
+
+.list-movies__details {
+	background-color: rgba(0,0,0,0.3);
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	&:hover {
+		opacity: 1;
+	}
+}
+
+.details-btn {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%);
+}
+
+.background-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url(../img/space-cover.jpg);
+  background-position: center;
+  background-size: cover;
+  opacity: 0.4;
+}
+
+.movie__title {
+	font-size: 36px;
+}
+.movie__section {
+	background-color: rgba(0,0,0,0.4);
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
