@@ -16,6 +16,10 @@
           {{#link-to 'home'}}Главная{{/link-to}}
         {{/link-to}}
       </ul>
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">{{view Ember.TextField valueBinding=keyword classNames="form-control"}}</div>
+        <button class="btn btn-default"{{action 'search' keyword}}>Найти</button>
+      </form>
     </div>
   </div>
 </nav>

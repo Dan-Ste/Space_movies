@@ -10,9 +10,10 @@ Router.map(function() {
 
   this.route('movie', {
   	path: 'movies/:movie_id'
-	});
+    });
 
-  
+
+  this.route('search', { path: 'search/:keyword'});
 });
 
 export default Router;
