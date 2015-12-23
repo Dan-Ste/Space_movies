@@ -12,7 +12,6 @@ Router.map(function() {
   	path: 'movies/:movie_id'
     });
 
-
   this.route('search', { path: 'search/:keyword'});
 });
 

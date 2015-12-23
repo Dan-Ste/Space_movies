@@ -2,33 +2,43 @@
   <div class="row info-row">
     <div class="col-lg-12">
     	<h3 class="page-title">Фильмы по популярности</h3>
+    	<p>Страница {{page}} из {{model.totalPages}}</p>
     </div>
   </div>
-  <div class="row">
-    {{#each model.movies as |movie|}}
-	    	<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
-	    		<div class="list-movies">
-	    			{{#link-to 'movie' movie.id}}
-				    	<div class="list-movies__movie-poster">
-				    		<img src="{{model.imageUrl}}{{movie.poster_path}}" alt="">
-				    		<div class="list-movies__details">
-				      		{{#link-to 'movie' movie.id classNames="btn btn-primary btn-sm hidden-xs details-btn"}}Подробнее{{/link-to}}
+  <div class="row list-movies">
+			{{#each model.movies as |movie|}}
+				<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+    			{{#link-to 'movie' movie.id}}
+			    	<div class="movie">
+			    		<div class="movie__poster">
+			    			{{#if movie.poster_path}}
+			    				<img src="{{model.imageUrl}}{{movie.poster_path}}" alt="">
+			    			{{else}}
+			    				<i class="movie__picture glyphicon glyphicon-picture"></i>
+		    				{{/if}}
+			    			<div class="movie__details">
+				    			<div class="movie__movie-description">
+						    		<p>{{movie.release_date}}</p>
+							      <h4 class="movie__movie-title">{{movie.title}}</h4>
+						      </div>
+				      		{{#link-to 'movie' movie.id classNames="btn btn-primary hidden-xs details-btn"}}Подробнее{{/link-to}}
 				      	</div>
-				    	</div>
-      			{{/link-to}}
-			    	<div class="list-movies__movie-description">
-			    		<p>{{movie.release_date}}</p>
-				      <h4 class="list-movies__movie-title">{{movie.title}}</h4>
-			      </div>
-		      </div>
-	      </div>
-    {{/each}}
+			    		</div>
+			    	</div>
+  				{{/link-to}}
+   			</div>
+			{{/each}}
   </div>
   <div class="row">
   	<div class="col-lg-12 text-center">
+  		<p>Страница {{page}} из {{model.totalPages}}</p>
   		<ul class="pager">
-			  <li><a href="#">Назад</a></li>
-			  <li><a href="#">Вперед</a></li>
+  			{{#if isPositivePage}}
+			  	<li><a href="#" {{action "prevPage"}}>Назад</a></li>
+			  {{/if}}
+			  {{#if isLessTotalPages}}
+			  	<li><a href="#" {{action "nextPage"}}>Вперед</a></li>
+			  {{/if}}
 			</ul>
   	</div>
   </div>
