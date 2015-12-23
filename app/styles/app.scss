@@ -2,6 +2,7 @@
 
 /* Components */
 @import 'components/backdrop-image';
+@import 'components/list-cards';
 
 
 .navbar {
@@ -13,89 +14,12 @@
 	font-size: 18px;
 }
 
-.movie {
-	display: inline-block;
-	position: relative;
-	margin-bottom: 25px;
-	text-align: center;
-	height: 350px;
-	width: 100%;
-}
-
-.movie__poster {
-	height: 100%;
-	display: inline-block;
-	position: relative;
-	img {
-		max-width: 100%;
-		max-height: 350px;	
-	}
-}
-
-.movie__picture {
-	top: 50%;
-	transform: translateY(-50%);
-	font-size: 70px;
-}
-
-.movie__movie-description {
-	margin-top: 50px;
-}
-
-.movie__movie-title {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-size: 22px;
-}
-
-.movie__details {
-	opacity: 0;
-	position: absolute;
-	background-color: rgba(0,0,0,0.3);
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	&:hover {
-		opacity: 1;
-	}
-}
-
-.details-btn {
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%);
-}
-
-.background-container {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-}
-
-.background-image {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-image: url(../img/space-cover.jpg);
-  background-position: center;
-  background-size: cover;
-  opacity: 0.4;
-}
-
 .media-frame__title {
 	font-size: 36px;
 }
 
 .media-frame__section {
-	background-color: rgba(0,0,0,0.4);
+	background-color: rgba(0,0,0,0.8);
 	padding-top: 15px;
 	padding-bottom: 15px;
 }

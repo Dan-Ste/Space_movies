@@ -2,45 +2,30 @@
   <div class="row info-row">
     <div class="col-lg-12">
     	<h3 class="page-title">Результат поиска: {{model.keyword}}</h3>
+    	<p>Страница {{page}} из {{model.totalPages}}</p>
     </div>
   </div>
-  <div class="row list-movies">
-			{{#each model.movies as |movie|}}
-				<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
-    			{{#link-to 'movie' movie.id}}
-			    	<div class="movie">
-			    		<div class="movie__poster">
-			    			{{#if movie.poster_path}}
-			    				<img src="{{model.imageUrl}}{{movie.poster_path}}" alt="">
-			    			{{else}}
-			    				<i class="movie__picture glyphicon glyphicon-picture"></i>
-		    				{{/if}}
-			    			<div class="movie__details">
-				    			<div class="movie__movie-description">
-						    		<p>{{movie.release_date}}</p>
-							      <h4 class="movie__movie-title">{{movie.title}}</h4>
-						      </div>
-				      		{{#link-to 'movie' movie.id classNames="btn btn-primary hidden-xs details-btn"}}Подробнее{{/link-to}}
-				      	</div>
-			    		</div>
-			    	</div>
-  				{{/link-to}}
-   			</div>
-			{{/each}}
+  <div class="row list-cards">
+		{{#each model.movies as |movie|}}
+			{{list-cards movie=movie imageUrl=model.imageUrl}}
+		{{/each}}
   </div>
   <div class="row">
   	<div class="col-lg-12 text-center">
-  		<p>Страница {{page}} из {{model.totalPages}}</p>
-  		<ul class="pager">
-  			{{#if isPositivePage}}
-			  	<li><a href="#" {{action "prevPage"}}>Назад</a></li>
-			  {{/if}}
-			  {{#if isLessTotalPages}}
-			  	<li><a href="#" {{action "nextPage"}}>Вперед</a></li>
-			  {{/if}}
-			</ul>
+  		{{#if isMoreThanOnePage}}
+				<p>Страница {{page}} из {{model.totalPages}}</p>
+				<ul class="pager">
+		  			{{#if isPositivePage}}
+					  	<li><a href="#" {{action "prevPage"}}>Назад</a></li>
+					  {{/if}}
+					  {{#if isLessTotalPages}}
+					  	<li><a href="#" {{action "nextPage"}}>Вперед</a></li>
+					  {{/if}}
+				</ul>
+		  {{/if}}
   	</div>
   </div>
+  {{prevPage}}
 </div>
 <div class="background-container">
 	<div class="background-image"></div>

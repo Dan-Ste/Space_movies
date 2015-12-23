@@ -17,6 +17,10 @@ module.exports = function(environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
+    movieDB: {
+      apiHost: 'http://api.themoviedb.org/3/',
+      apiKey: '72b56103e43843412a992a8d64bf96e9'
+    },
     contentSecurityPolicy: {
       'connect-src': "'self' ws://ember.dev:35729 http://api.themoviedb.org/ https://api.themoviedb.org/",
       'img-src': "'self' http://image.tmdb.org/ https://image.tmdb.org/",

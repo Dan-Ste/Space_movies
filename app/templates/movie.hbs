@@ -2,15 +2,43 @@
   <div class="row">
   	<div class="col-lg-12">
     	<h1 class="media-frame__title">{{model.movie.title}}</h1>
+      {{#if model.movie.tagline}}
+        <h4>{{model.movie.tagline}}</h4>
+      {{/if}}
     </div>
   </div>
   <div class="row media-frame__section">
     <div class="col-lg-4">
-    <div class="media-frame__picture">
-    	<img src="{{model.posterUrl}}" alt="">
+      <div class="media-frame__picture">
+      	<img src="{{model.posterUrl}}" alt="">
+      </div>
     </div>
-    	
+    <div class="col-lg-8">
+      <dl>
+        <dt>Описание:</dt>
+          <dd>{{model.movie.overview}}</dd>
+        <dt>Жанры:</dt>
+          <dd>
+            <ul>
+              {{#each model.movie.genres as |genre|}}
+                <li>{{genre.name}}</li>
+              {{/each}}
+            </ul>
+          </dd>
+        {{#if model.movie.homepage}}
+          <dt>Website:</dt>
+          <dd><a {{bind-attr href=model.movie.homepage}}>{{model.movie.homepage}}</a></dd>
+        {{/if}}
+        <dt>Рейтинг:</dt>
+        <dd>{{model.movie.vote_average}}</dd>
+        <dt>Дата релиза:</dt>
+        <dd>{{model.movie.release_date}}</dd>
+
+      </dl>
     </div>
+  </div>
+  <div class="row">
+    {{outlet}}
   </div>
 </div>
 <div class="backdrop-container">

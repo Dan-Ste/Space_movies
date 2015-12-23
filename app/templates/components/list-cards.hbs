@@ -1,0 +1,18 @@
+{{#link-to 'movie' movie.id}}
+	<div class="card">
+		<div class="card__poster">
+			{{#if movie.poster_path}}
+				<img src="{{imageUrl}}{{movie.poster_path}}" alt="">
+			{{else}}
+				<i class="card__picture glyphicon glyphicon-picture"></i>
+			{{/if}}
+			<div class="card__details">
+  			<div class="card__description">
+	    		<h6>{{releaseYear}}</h6>
+		      <h4 class="card__title">{{movie.title}}</h4>
+	      </div>
+    		{{#link-to 'movie' movie.id classNames="btn btn-primary hidden-xs details-btn"}}Подробнее{{/link-to}}
+    	</div>
+		</div>
+	</div>
+{{/link-to}}
