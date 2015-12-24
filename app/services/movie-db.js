@@ -11,15 +11,6 @@ export default Ember.Service.extend({
 	logger: function(m) {
 	    console.log(m);
   },
-  getMovie: function(movieId) {
-  	return request(this.apiHost + 'movie/' + movieId + '?api_key=' + this.apiKey + 
-  								'&language=' + this.language).then((data) => {
-      return {
-        movie: data,
-        posterUrl: this.imageUrl + data.poster_path
-      };
-  	});
-	},
 	discoverMovies: function(page) {
 		return request(this.apiHost + 'discover/movie' + '?api_key=' + this.apiKey +
 									'&page=' + page + '&language=' + this.language + '&sort_by=' + this.sortBy).then((data) => {
@@ -33,12 +24,31 @@ export default Ember.Service.extend({
 	searchMovies: function(keyword, page) {
 		return request(this.apiHost + 'search/movie' + '?api_key=' + this.apiKey + 
 									'&query=' + keyword + '&page=' + page + '&language=' + this.language).then((data) => {
-			console.log(data);
       return {
         movies: data.results,
         imageUrl: this.imageUrl,
         keyword: keyword,
         totalPages: data.total_pages
+      };
+  	});
+	},
+  getMovie: function(movieId) {
+  	return request(this.apiHost + 'movie/' + movieId + '?append_to_response=videos' + '&api_key=' + this.apiKey +
+  								'&language=' + this.language).then((data) => {
+  									console.log(data.videos.results[0])
+      return {
+        data: data,
+        posterUrl: this.imageUrl + data.poster_path,
+        trailer: data.videos.results[0]
+      };
+  	});
+	},
+	getEnglishTrailer: function(movieId) {
+		return request(this.apiHost + 'movie/' + movieId + '/videos' + '?api_key=' + this.apiKey +
+  								'&language=en').then((data) => {
+			console.log(data);
+      return {
+      	data: data.results[0]
       };
   	});
 	}

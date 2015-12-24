@@ -1,46 +1,68 @@
 <div class="container media-frame">
   <div class="row">
   	<div class="col-lg-12">
-    	<h1 class="media-frame__title">{{model.movie.title}}</h1>
-      {{#if model.movie.tagline}}
-        <h4>{{model.movie.tagline}}</h4>
+    	<h1 class="media-frame__title">{{model.movie.data.title}}</h1>
+      {{#if model.movie.data.tagline}}
+        <h4>{{model.movie.data.tagline}}</h4>
       {{/if}}
     </div>
   </div>
   <div class="row media-frame__section">
     <div class="col-lg-4">
       <div class="media-frame__picture">
-      	<img src="{{model.posterUrl}}" alt="">
+      	<img src="{{model.movie.posterUrl}}" alt="">
       </div>
     </div>
     <div class="col-lg-8">
       <dl>
-        <dt>Описание:</dt>
-          <dd>{{model.movie.overview}}</dd>
-        <dt>Жанры:</dt>
-          <dd>
-            <ul>
-              {{#each model.movie.genres as |genre|}}
-                <li>{{genre.name}}</li>
-              {{/each}}
-            </ul>
-          </dd>
-        {{#if model.movie.homepage}}
-          <dt>Website:</dt>
-          <dd><a {{bind-attr href=model.movie.homepage}}>{{model.movie.homepage}}</a></dd>
-        {{/if}}
-        <dt>Рейтинг:</dt>
-        <dd>{{model.movie.vote_average}}</dd>
-        <dt>Дата релиза:</dt>
-        <dd>{{model.movie.release_date}}</dd>
-
+        <dt><h6>Описание:</h6></dt>
+          <dd>{{model.movie.data.overview}}</dd>
       </dl>
+      <table class="table table-striped table-hover ">
+        <tbody>
+          <tr>
+            <td>Жанры:</td>
+            <td>
+              <ul>
+                {{#each model.movie.data.genres as |genre|}}
+                  <li>{{genre.name}}</li>
+                {{/each}}
+              </ul>
+            </td>
+          </tr>
+          {{#if model.movie.data.homepage}}
+            <tr>
+              <td>Сайт:</td>
+              <td><a {{bind-attr href=model.movie.data.homepage}}>{{model.movie.data.homepage}}</a></td>
+            </tr>
+          {{/if}}
+          <tr>
+            <td>Рейтинг:</td>
+            <td>{{model.movie.data.vote_average}} / 10</td>
+          </tr>
+          <tr>
+            <td>Дата релиза:</td>
+            <td>{{model.movie.data.release_date}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-  </div>
-  <div class="row">
-    {{outlet}}
+    <div class="col-lg-12">
+      {{#if model.movie.trailer}}
+        <h5>Трейлер на русском</h5>
+        <div class="trailer-container">
+          {{trailer-player model=model.movie.trailer}}
+        </div>
+      {{else if model.trailer.data}}
+        <h5>Трейлер на английском</h5>
+        <div class="trailer-container">
+          {{trailer-player model=model.trailer.data}}
+        </div>
+      {{else}}
+      {{/if}}
+    </div>
   </div>
 </div>
 <div class="backdrop-container">
-  {{backdrop-image model=model}}
+  {{backdrop-image model=model.movie}}
 </div>

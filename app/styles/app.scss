@@ -22,13 +22,18 @@
 	background-color: rgba(0,0,0,0.8);
 	padding-top: 15px;
 	padding-bottom: 15px;
+	margin-bottom: 30px;
 }
 
 .media-frame__picture {
 	img {
 		max-width: 100%;
 	}
+	text-align: center;
 }
 
+.trailer-container {
+	height: 600px;
+}
 
 
