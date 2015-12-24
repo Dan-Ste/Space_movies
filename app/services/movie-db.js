@@ -35,7 +35,7 @@ export default Ember.Service.extend({
   getMovie: function(movieId) {
   	return request(this.apiHost + 'movie/' + movieId + '?append_to_response=videos' + '&api_key=' + this.apiKey +
   								'&language=' + this.language).then((data) => {
-  									console.log(data.videos.results[0])
+			console.log(data);
       return {
         data: data,
         posterUrl: this.imageUrl + data.poster_path,
@@ -46,7 +46,6 @@ export default Ember.Service.extend({
 	getEnglishTrailer: function(movieId) {
 		return request(this.apiHost + 'movie/' + movieId + '/videos' + '?api_key=' + this.apiKey +
   								'&language=en').then((data) => {
-			console.log(data);
       return {
       	data: data.results[0]
       };

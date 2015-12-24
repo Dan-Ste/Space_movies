@@ -16,17 +16,25 @@
     <div class="col-lg-8">
       <dl>
         <dt><h6>Описание:</h6></dt>
+        {{#if model.movie.data.overview}}
           <dd>{{model.movie.data.overview}}</dd>
+        {{else}}
+          <dd>-</dd>
+        {{/if}}
       </dl>
       <table class="table table-striped table-hover ">
         <tbody>
           <tr>
             <td>Жанры:</td>
             <td>
-              <ul>
-                {{#each model.movie.data.genres as |genre|}}
-                  <li>{{genre.name}}</li>
-                {{/each}}
+              <ul class="genre-list">
+                {{#if model.movie.data.genres.length}}
+                  {{#each model.movie.data.genres as |genre|}}
+                    <li class="genre-list__item">{{genre.name}} /</li>
+                  {{/each}}
+                {{else}}
+                  <li class="genre-list__item">-</li>
+                {{/if}}
               </ul>
             </td>
           </tr>
@@ -38,11 +46,19 @@
           {{/if}}
           <tr>
             <td>Рейтинг:</td>
-            <td>{{model.movie.data.vote_average}} / 10</td>
+            {{#if model.movie.data.vote_average}}
+              <td>{{model.movie.data.vote_average}} / 10</td>
+            {{else}}
+              <td>-</td>
+            {{/if}}
           </tr>
           <tr>
             <td>Дата релиза:</td>
-            <td>{{model.movie.data.release_date}}</td>
+            {{#if model.movie.data.release_date}}
+              <td>{{model.movie.data.release_date}}</td>
+            {{else}}
+              <td>-</td>
+            {{/if}}
           </tr>
         </tbody>
       </table>
